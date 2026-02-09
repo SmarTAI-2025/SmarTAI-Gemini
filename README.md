@@ -1,70 +1,88 @@
-## 环境配置
+# SmarTAI
 
-```
-conda create -n env_name python=3.12
-conda activate env_name
+**SmarTAI** is an intelligent assignment assessment platform tailored for higher education science and engineering courses. Powered by Gemini-3-flash, it automates the grading of complex question types—including computational problems, mathematical proofs, and programming tasks. The system integrates RAG-based knowledge retrieval and interactive data visualization  to provide precise feedback and deep insights into student performance.
+
+## Environment Setup
+
+```bash
 pip install -r requirements.txt
 ```
 
-## 运行测试
+## Running Tests
 
 `cd /path/to/project-root`
 
-先运行后端代码：`python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000`
+**1. Start the Backend Service**
 
-> --reload 方便开发调试
-> 可以省略 python -m
+Run the following command first:
 
-> (可选)在新终端中测试后端：
->
-> ```
+`python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000`
+
+> **Note:**
+> * The `--reload` flag enables hot reloading for easier development and debugging.
+> * `python -m` can optionally be omitted.
+> 
+> 
+
+> **(Optional) Test the backend in a new terminal:**
+> ```bash
 > curl -X POST "http://localhost:8000/file_preview" \
 >      -F "file=@hw.zip"
 > ```
+> 
 
-再在新终端中运行前端代码：`streamlit run frontend/app.py --client.showSidebarNavigation=False`
+**2. Start the Frontend Application**
 
-> - --client.showSidebarNavigation=False 隐藏 streamlit 默认文件目录导航侧边栏
-> - 端口将随机分配，启动后会在控制台显示访问地址
-> - --server.headless true：在无头环境（容器、远程服务器）下不自动尝试打开浏览器。开发时本地也可以省略该参数以自动打开浏览器。
+Run the following command in a new terminal:
 
-## 一体化启动（推荐开发使用）
+`streamlit run frontend/app.py --client.showSidebarNavigation=False`
+
+> **Note:**
+> * `--client.showSidebarNavigation=False`: Hides the default Streamlit file directory sidebar.
+> * Ports are assigned randomly; the access URL will be displayed in the console after startup.
+> * `--server.headless true`: Prevents the browser from opening automatically (useful for headless environments like containers or remote servers). You can omit this parameter during local development to automatically open the browser.
+> 
+
+## Integrated Startup (Recommended for Development)
 
 `streamlit run app.py`
 
-这个脚本会自动启动后端和前端服务，并处理端口分配和环境变量设置。
+This script automatically launches both the backend and frontend services, handling port allocation and environment variable configuration for you.
 
-## AI自动批改功能
+## AI Auto-Grading Feature
 
-本项目新增了AI自动批改功能，支持以下题型：
-- 计算题
-- 概念题
-- 证明题
-- 编程题
+This project now includes an AI-powered auto-grading feature that supports the following question types:
 
-### 功能说明
+* Calculation Problems
+* Conceptual Questions
+* Proofs
+* Programming/Coding Problems
 
-1. 学生上传作业后，系统会自动识别题目和答案
-2. 点击"开启AI批改"按钮，系统会为每个学生生成批改任务
-3. 批改结果会显示在"批改结果"页面
+### Feature Workflow
 
-### API接口
+1. **Upload:** After students upload their assignments, the system automatically identifies the questions and answers.
+2. **Execution:** Click the "Start AI Grading" button to generate grading tasks for each student.
+3. **Review:** Grading results will be displayed on the "Grading Results" page.
 
-- `POST /ai_grading_new/grade_student/` - 启动学生作业批改任务
-- `GET /ai_grading_new/grade_result/{job_id}` - 获取批改结果
+### API Endpoints
 
-## 部署指南
+* `POST /ai_grading_new/grade_student/` - Initiate a grading task for a student.
+* `GET /ai_grading_new/grade_result/{job_id}` - Retrieve grading results.
 
-详细部署说明请参考 [DEPLOYMENT.md](DEPLOYMENT.md) 文件，其中包含：
+## Deployment Guide
 
-1. **托管平台部署**（推荐）：
-   - 前端部署到 Streamlit Community Cloud
-   - 后端部署到 Render (配置文件位于 [backend/render.yaml](file:///d%3A/work/SmarTAI/backend/render.yaml))
+For detailed deployment instructions, please refer to [DEPLOYMENT.md](https://www.google.com/search?q=DEPLOYMENT.md). The guide includes:
 
-2. **容器化部署**：
-   - 使用 Docker 和 Docker Compose
-   - 适合需要更多控制的生产环境
+1. **Managed Platform Deployment** (Recommended):
+* **Frontend:** Deploy to Streamlit Community Cloud.
+* **Backend:** Deploy to Render (Configuration file located at `backend/render.yaml`).
 
-3. **环境变量配置**：
-   - BACKEND_URL：前端连接后端的URL
-   - FRONTEND_URLS：后端允许的前端来源（CORS配置）
+
+2. **Containerized Deployment**:
+* Uses Docker and Docker Compose.
+* Suitable for production environments requiring granular control.
+
+
+3. **Environment Configuration**:
+* `BACKEND_URL`: The URL used by the frontend to connect to the backend.
+* `FRONTEND_URLS`: The frontend origins allowed by the backend (CORS configuration).
