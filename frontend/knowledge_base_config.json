@@ -1,0 +1,57 @@
+{
+  "kb_cs_algorithms": {
+    "id": "kb_cs_algorithms",
+    "name": "Advanced Algorithms and Data Structures",
+    "description": "Covers advanced algorithm design, complexity analysis, dynamic programming, graph algorithms, etc.",
+    "category": "Computer Science",
+    "created_at": "2026-02-08T10:00:00.000000",
+    "updated_at": "2026-02-08T10:00:00.000000",
+    "file_count": 25,
+    "total_size": 15728640,
+    "files": {}
+  },
+  "kb_cs_systems": {
+    "id": "kb_cs_systems",
+    "name": "Computer Systems Principles and Architecture",
+    "description": "Computer organization, OS kernels, distributed system design, etc.",
+    "category": "Computer Science",
+    "created_at": "2026-02-08T10:00:00.000000",
+    "updated_at": "2026-02-08T10:00:00.000000",
+    "file_count": 32,
+    "total_size": 22020096,
+    "files": {}
+  },
+  "kb_cs_ai": {
+    "id": "kb_cs_ai",
+    "name": "Frontier AI Technologies",
+    "description": "Machine learning, deep learning, NLP, computer vision, etc.",
+    "category": "Computer Science",
+    "created_at": "2026-02-08T10:00:00.000000",
+    "updated_at": "2026-02-08T10:00:00.000000",
+    "file_count": 41,
+    "total_size": 31457280,
+    "files": {}
+  },
+  "kb_cs_security": {
+    "id": "kb_cs_security",
+    "name": "Network Security and Cryptography",
+    "description": "Information security theory, cryptography algorithms, network defense, blockchain, etc.",
+    "category": "Computer Science",
+    "created_at": "2026-02-08T10:00:00.000000",
+    "updated_at": "2026-02-08T10:00:00.000000",
+    "file_count": 28,
+    "total_size": 18874368,
+    "files": {}
+  },
+  "kb_cs_database": {
+    "id": "kb_cs_database",
+    "name": "Advanced Database Systems",
+    "description": "Database kernel principles, distributed databases, NoSQL",
+    "category": "Computer Science",
+    "created_at": "2026-02-08T10:00:00.000000",
+    "updated_at": "2026-02-08T10:00:00.000000",
+    "file_count": 19,
+    "total_size": 12582912,
+    "files": {}
+  }
+}

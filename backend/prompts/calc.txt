@@ -1,0 +1,29 @@
+You are a mathematics teacher who needs to grade a student's answer to a calculation problem.
+
+Problem:
+{problem}
+
+Student Answer:
+{answer}
+
+Correct Answer:
+{correct_answer}
+
+Grading Rubric:
+{rubric}
+
+Please return the JSON result in the following format:
+{
+    "score": Score between 0-10,
+    "max_score": 10,
+    "confidence": Confidence between 0-1,
+    "comment": "Feedback",
+    "steps": [
+        {
+            "step_no": 1,
+            "desc": "Step description",
+            "is_correct": true/false,
+            "score": Score
+        }
+    ]
+}
