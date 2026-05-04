@@ -111,18 +111,20 @@ def get_student_store() -> Dict[str,Dict[str, Any]]:
 # 若需使用代理，请取消以下两行注释
 # os.environ["HTTP_PROXY"] = "http://127.0.0.1:7897"
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:7897"
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyA6BAa8PgdrfgX9WO-zFAOiBG6aWanNmto") #"AIzaSyCTHCicOOCvfqirIVg1xcGvUYl5h58l7U0"
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3-flash-preview")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "YOUR_API_KEY_HERE")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite-preview")
 
 # 您需要使用支持视觉（多模态）的模型，例如 "gpt-4o"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "YOUR_API_KEY_HERE")
 OPENAI_API_BASE = os.getenv("OPENAI_API_BASE", "https://open.bigmodel.cn/api/paas/v4")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "glm-4.5-air")
 
+MODEL_PROVIDER = os.getenv("MODEL_PROVIDER", "gemini")
+
 CONTEXT_WINDOW_THRESHOLD_CHARS = 200000 
 
 # async def get_llm(model="gemini") -> ChatOpenAI:
-def get_llm(model="gemini") -> ChatOpenAI:
+def get_llm(model=MODEL_PROVIDER) -> ChatOpenAI:
     """返回共享的LLM客户端实例。"""
 
     if model == "gemini":
